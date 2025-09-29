@@ -12,6 +12,8 @@ certifi==2025.8.3
     #   httpcore
     #   httpx
     #   sentry-sdk
+chardet==5.2.0
+    # via papermill (pyproject.toml)
 click==8.3.0
     # via
     #   rich-toolkit
@@ -69,7 +71,9 @@ pygments==2.19.2
 python-dotenv==1.1.1
     # via uvicorn
 python-multipart==0.0.20
-    # via fastapi
+    # via
+    #   papermill (pyproject.toml)
+    #   fastapi
 pyyaml==6.0.3
     # via uvicorn
 rich==14.1.0
