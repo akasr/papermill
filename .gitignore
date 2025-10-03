@@ -1,0 +1,13 @@
+# Python cache & compiled files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Ruff cache
+.ruff_cache/
+
+# Virtual envs & common IDE files
+.venv/
+env/
+.vscode/
+.idea/
