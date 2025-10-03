@@ -8,4 +8,5 @@ dependencies = [
     "chardet>=5.2.0",
     "fastapi[standard]>=0.118.0",
     "python-multipart>=0.0.20",
+    "ruff>=0.13.3",
 ]
