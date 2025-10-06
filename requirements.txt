@@ -54,6 +54,8 @@ idna==3.10
     #   httpx
 jinja2==3.1.6
     # via fastapi
+lxml==6.0.2
+    # via python-docx
 markdown-it-py==4.0.0
     # via rich
 markupsafe==3.0.3
@@ -69,6 +71,8 @@ pydantic-core==2.33.2
 pygments==2.19.2
     # via rich
 pymupdf==1.26.4
+    # via papermill (pyproject.toml)
+python-docx==1.2.0
     # via papermill (pyproject.toml)
 python-dotenv==1.1.1
     # via uvicorn
@@ -107,6 +111,7 @@ typing-extensions==4.15.0
     #   fastapi
     #   pydantic
     #   pydantic-core
+    #   python-docx
     #   rich-toolkit
     #   typer
     #   typing-inspection
