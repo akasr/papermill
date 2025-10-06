@@ -1,5 +1,5 @@
 from fastapi import FastAPI, UploadFile
-from src.parser import parser
+from src.parsers.main import parser
 from src.custom_types import Result
 
 app = FastAPI()

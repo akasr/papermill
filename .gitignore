@@ -1,8 +1,8 @@
 # Python cache & compiled files
-src/__pycache__/
-src/*.py[cod]
-src/*.pyo
-src/*.pyc
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyc
 
 # Ruff cache
 .ruff_cache/
