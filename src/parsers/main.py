@@ -3,6 +3,7 @@ import hashlib
 from fastapi import UploadFile, HTTPException
 from src.custom_types import Metadata, Result
 from src.parsers.parse_txt import parse_txt_content
+from src.parsers.parse_pdf import parse_pdf_content
 
 
 def detect_encoding(file: bytes) -> tuple[str, float]:
@@ -25,10 +26,11 @@ async def parser(file: UploadFile) -> Result:
 
     encoding, confidence = detect_encoding(file_bytes)
     text = None
+    page_count = None
 
     match file.content_type:
         case "application/pdf":
-            text = "pdf"
+            text, page_count = parse_pdf_content(file_bytes)
         case "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
             text = "docx"
         case "text/plain":
@@ -50,7 +52,7 @@ async def parser(file: UploadFile) -> Result:
             "encoding_confidence": confidence,
             "size": size,
             "sha256": hashlib.sha256(file_bytes).hexdigest(),
-            "page_count": None,
+            "page_count": page_count,
             "line_count": line_count,
             "word_count": word_count,
             "char_count": char_count,
