@@ -1,17 +1,22 @@
 from src.parsers.utils import normalize_line_endings
 from fastapi import HTTPException
 
+# Constants
+BINARY_CHECK_SAMPLE_SIZE = 8192  # 8KB
+BINARY_THRESHOLD = 0.3  # 30% non-text characters
+
+
 def is_binary(file: bytes) -> bool:
     """
     Detect if a file is binary by checking for null bytes and
     the ratio of non-text characters.
     """
     # Check for null bytes (common in binary files)
-    if b"\x00" in file[:8192]:  # Check first 8KB
+    if b"\x00" in file[:BINARY_CHECK_SAMPLE_SIZE]:
         return True
 
     # Sample the file (check first 8KB or entire file if smaller)
-    sample = file[:8192]
+    sample = file[:BINARY_CHECK_SAMPLE_SIZE]
 
     # Count non-text bytes (control characters except whitespace)
     non_text_chars = 0
@@ -23,10 +28,11 @@ def is_binary(file: bytes) -> bool:
             non_text_chars += 1
 
     # If more than 30% non-text characters, consider it binary
-    if len(sample) > 0 and (non_text_chars / len(sample)) > 0.3:
+    if len(sample) > 0 and (non_text_chars / len(sample)) > BINARY_THRESHOLD:
         return True
 
     return False
+
 
 def parse_txt_content(file: bytes, encoding: str) -> str:
     """Parse text content, ensuring it's not binary and decoding properly."""
