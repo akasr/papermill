@@ -45,6 +45,7 @@ httptools==0.6.4
     # via uvicorn
 httpx==0.28.1
     # via
+    #   papermill (pyproject.toml)
     #   fastapi
     #   fastapi-cloud-cli
 idna==3.10

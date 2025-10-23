@@ -1,7 +1,7 @@
 from docx import Document
 import io
 from fastapi import HTTPException
-from src.parsers.utils import normalize_line_endings
+from src.utils import normalize_line_endings
 
 
 def parse_docx_content(file: bytes) -> str:

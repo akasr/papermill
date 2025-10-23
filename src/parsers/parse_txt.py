@@ -1,4 +1,4 @@
-from src.parsers.utils import normalize_line_endings
+from src.utils import normalize_line_endings
 from fastapi import HTTPException
 
 # Constants

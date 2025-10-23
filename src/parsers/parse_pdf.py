@@ -1,6 +1,6 @@
 import pymupdf
 from fastapi import HTTPException
-from src.parsers.utils import normalize_line_endings
+from src.utils import normalize_line_endings
 
 
 def parse_pdf_content(file: bytes) -> tuple[str, int | None]:
