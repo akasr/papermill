@@ -3,11 +3,7 @@ A general-purpose FastAPI microservice that extracts text, structured data from 
 
 ## Core Functions:
 
-- **Document Parsing**: Handles multiple file types.
-
-- **Multi-Modal Extraction**: Extracts text from the main body, images (via OCR), and tables.
-
-- **General Summarization**: Generates a concise summary of the document's content without needing a specific user query.
+- **Document Parsing**: Handles multiple file types (TXT, DOCX and PDF).
 
 - **Metadata Extraction**: Pulls out standard metadata like author, creation date, etc.
 
@@ -16,9 +12,12 @@ A general-purpose FastAPI microservice that extracts text, structured data from 
 ## Installation and Setup
 
 ```bash
-# Clone the repository
-git clone https://github.com/akasr/papermill.git
+# Fork and clone the repository
+git clone https://github.com/<username>/papermill.git
 cd papermill
+
+# Create a branch for your changes
+git checkout -b feature/your-feature-name
 
 # Create and activate a virtual environment
 uv venv
@@ -31,8 +30,11 @@ uv pip sync requirements.txt
 uvicorn src.app:app --reload
 ```
 
+Push and make a pull request when your changes are ready.
+
 ## Endpoints
 
-- `POST /extract`: Upload a document and receive extracted text, tables, metadata, and a general summary.
+- `POST /extract`: Upload a document and receive extracted text and metadata.
+- `POST /extract/url`: Provide a URL to a document for extraction.
 - `GET /health`: Check the health status of the service.
 - `GET /docs`: Access the interactive API documentation.
